@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>deleted</key>
+	<array>
+		<string>F0EEA2B9-5191-42D5-B08D-526235C8C34B</string>
+	</array>
+	<key>name</key>
+	<string>Fluid CSS</string>
+	<key>ordering</key>
+	<array>
+		<string>40F1EA9A-6FF6-47A8-80B4-4BE526BD4BC5</string>
+		<string>94E1780B-E370-4378-999D-EA05175908CE</string>
+		<string>CD01DB77-86D2-494F-B01E-878D6787E679</string>
+	</array>
+	<key>uuid</key>
+	<string>52D71130-B982-448D-B395-A76754964D68</string>
+</dict>
+</plist>

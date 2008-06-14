@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -w
+SUPPORT = ENV["TM_SUPPORT_PATH"]
+DIALOG = ENV["DIALOG"]
+
+require "#{SUPPORT}/lib/osx/plist"
+require "#{SUPPORT}/lib/escape"
+
+size = 16
+
+open("|#{e_sh DIALOG} -p {} -cm fontsize", 'r') do |io|
+  res = OSX::PropertyList.load(io.read)
+  abort if res.nil?
+
+  size = eval(res["fontSize"])
+end
+
+line = STDIN.read
+px_size = line[/\d+(\s*px)?/]
+em_size = px_size.to_f / size.to_f
+
+puts line.gsub(/#{px_size}/, "%0.3fem" % em_size)
+</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^%</string>
+	<key>name</key>
+	<string>convert pixels to ems (arbitrary)</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.css</string>
+	<key>uuid</key>
+	<string>40F1EA9A-6FF6-47A8-80B4-4BE526BD4BC5</string>
+</dict>
+</plist>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -w
+size = 14
+
+line = STDIN.read
+px_size = line[/\d+(\s*px)?/]
+em_size = px_size.to_f / size.to_f
+
+puts line.gsub(/#{px_size}/, "%0.3fem" % em_size)
+</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^$</string>
+	<key>name</key>
+	<string>convert pixels to ems (14px)</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.css</string>
+	<key>uuid</key>
+	<string>94E1780B-E370-4378-999D-EA05175908CE</string>
+</dict>
+</plist>
