@@ -6,13 +6,10 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/env ruby -w
-size = 16
+require "#{ENV["TM_BUNDLE_PATH"]}/Support/lib/convert"
 
-line = STDIN.read
-px_size = line[/\d+(\s*px)?/]
-em_size = px_size.to_f / size.to_f
-
-puts line.gsub(/#{px_size}/, "%0.3fem" % em_size)
+Convert.size = 16
+Convert.convert
 </string>
 	<key>fallbackInput</key>
 	<string>line</string>

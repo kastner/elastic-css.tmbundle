@@ -11,21 +11,19 @@ DIALOG = ENV["DIALOG"]
 
 require "#{SUPPORT}/lib/osx/plist"
 require "#{SUPPORT}/lib/escape"
+require "#{ENV["TM_BUNDLE_PATH"]}/Support/lib/convert"
 
-size = 16
+Convert.size = 16
 
 open("|#{e_sh DIALOG} -p {} -cm fontsize", 'r') do |io|
   res = OSX::PropertyList.load(io.read)
   abort if res.nil?
 
-  size = eval(res["fontSize"])
+  Convert.size = eval(res["result"]["returnArgument"])
 end
 
-line = STDIN.read
-px_size = line[/\d+(\s*px)?/]
-em_size = px_size.to_f / size.to_f
+Convert.convert
 
-puts line.gsub(/#{px_size}/, "%0.3fem" % em_size)
 </string>
 	<key>fallbackInput</key>
 	<string>line</string>
